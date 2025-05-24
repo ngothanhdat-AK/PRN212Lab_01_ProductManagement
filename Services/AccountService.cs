@@ -13,7 +13,6 @@ namespace Services
         }
         public AccountMember GetAccountById(string accountID)
         {
-            Console.WriteLine("haa");
             return iAccountRepository.GetAccountById(accountID);
         }
     }

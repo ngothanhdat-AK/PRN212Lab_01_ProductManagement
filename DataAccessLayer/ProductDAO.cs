@@ -14,12 +14,13 @@ namespace DataAccessLayer
     {
         private static List<Product> listProducts;
 
-        public ProductDAO()
+        static ProductDAO()
         {
             Product chai = new Product(1, "Chai", 3, 12, 18);
-            Product chang = new Product(2, "Chang", 19, 17, 40);
-            Product aniseed = new Product(3, "Aniseed Syrup", 10, 13, 70);
+            Product chang = new Product(2, "Chang", 1, 23, 19);
+            Product aniseed = new Product(3, "Aniseed Syrup", 2, 23, 10);
             listProducts = new List<Product> { chai, chang, aniseed };
+            
         }
 
         public static List<Product> GetProducts()
@@ -28,7 +29,7 @@ namespace DataAccessLayer
         }
 
         //public static List<Product> GetProducts()
-        //{ 
+        //{
         //    var listProducts = new List<Product>();
         //    try
         //    {
@@ -53,10 +54,10 @@ namespace DataAccessLayer
             {
                 if(p.ProductId == product.ProductId)
                 {
+                    p.ProductId = product.ProductId;
                     p.ProductName = product.ProductName;
-                    p.CategoryId = product.CategoryId;
-                    p.UnitInStock = product.UnitInStock;
                     p.UnitPrice = product.UnitPrice;
+                    p.UnitInStock = product.UnitInStock;
                     p.CategoryId = product.CategoryId;
                 }
             }
