@@ -56,6 +56,12 @@ namespace DataAccessLayer
 
         public static void SaveProduct(Product p)
         {
+            int nextId = 1;
+            if (listProducts.Count > 0)
+            {
+                nextId = listProducts.Max(prod => prod.ProductId) + 1;
+            }
+            p.ProductId = nextId;
             listProducts.Add(p);
         }
 

@@ -46,8 +46,10 @@ namespace WPFApp
         {
             try
             {
-                var productList = iProductService.GetProducts();
+                var productList = iProductService.GetProducts().ToList();
+                dgData.ItemsSource = null;
                 dgData.ItemsSource = productList;
+                dgData.Items.Refresh();
             }
             catch (Exception ex)
             {
@@ -104,8 +106,7 @@ namespace WPFApp
         private void dgData_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var dataGrid = sender as DataGrid;
-            if (dataGrid == null)
-                return;
+            if (dataGrid == null) return;
 
             var selectedProduct = dataGrid.SelectedItem as Product;
             if (selectedProduct != null)
@@ -118,10 +119,10 @@ namespace WPFApp
             }
             else
             {
-                // Nếu không có dòng được chọn, reset input
                 resetInput();
             }
         }
+
 
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
